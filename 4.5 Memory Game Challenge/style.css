@@ -1,9 +1,9 @@
 h1 {
   text-align: center;
+  color: white;
 }
-
 body {
-  background-color: dimgray;
+  background-color: #353839;
 }
 #game div {
   border: 1px solid white;
