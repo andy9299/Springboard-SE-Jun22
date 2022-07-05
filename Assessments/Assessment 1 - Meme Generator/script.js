@@ -12,7 +12,6 @@ form.addEventListener('submit', function (e) {
     return
   }
 
-  console.log('yes')
   createMeme()
   form.reset()
 })
