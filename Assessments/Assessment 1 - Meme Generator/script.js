@@ -6,12 +6,10 @@ const memeList = document.querySelector('.memeList')
 
 form.addEventListener('submit', function (e) {
   e.preventDefault()
-
   if (!isValidImageURL(imageURL.value)) {
     alert('Not Valid Image URL!')
     return
   }
-
   createMeme()
   form.reset()
 })
@@ -19,7 +17,7 @@ form.addEventListener('submit', function (e) {
 memeList.addEventListener('dblclick', function (e) {
   let meme = e.target
   if ((meme.className = 'img')) {
-    console.log(meme.parentElement.remove())
+    meme.parentElement.remove()
   }
 })
 
