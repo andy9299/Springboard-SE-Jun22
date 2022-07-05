@@ -1,7 +1,49 @@
 h1 {
   text-align: center;
+  color: white;
+}
+
+input {
+  display: block;
 }
 
 body {
   background-color: #353839;
+  color: white;
+}
+.memeList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.meme {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 1em;
+  display: flex;
+}
+.img {
+  width: 100%;
+  max-width: 300px;
+}
+.top,
+.bottom {
+  position: absolute;
+  color: white;
+  text-shadow: 2px 2px 0 #000, -2px -2px 0 #000, 2px -2px 0 #000,
+    -2px 2px 0 #000, 0 2px 0 #000, 2px 0 0 #000, 0 -2px 0 #000, -2px 0 0 #000,
+    2px 2px 5px #000;
+  text-transform: uppercase;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.top {
+  top: 0;
+}
+
+.bottom {
+  bottom: 0;
 }

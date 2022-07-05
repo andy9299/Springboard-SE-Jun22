@@ -83,7 +83,6 @@ function handleCardClick(event) {
           const congrats = document.createElement('h1')
           congrats.innerText = `CONGRATS! \nYou finished in ${attempts} attempts!`
           document.body.appendChild(congrats)
-          return
         }
         allowClick = true
       } else {

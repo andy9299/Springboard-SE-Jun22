@@ -7,7 +7,17 @@
   </head>
   <body>
     <h1>Meme Generator</h1>
-    <div id="memes"></div>
+    <form id="addMeme">
+      <label for="imageURL">Image URL:</label>
+      <input type="text" name="imageURL" />
+      <label for="imageURL">Top Text:</label>
+      <input type="text" name="topText" />
+      <label for="imageURL">Bottom Text:</label>
+      <input type="text" name="bottomText" />
+      <input type="Submit" />
+    </form>
+    <p>Double Click to Remove an Image</p>
+    <div class="memeList"></div>
     <script src="script.js"></script>
   </body>
 </html>
