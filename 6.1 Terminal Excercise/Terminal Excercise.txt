@@ -1,0 +1,22 @@
+Part I
+1. mkdr first
+2. cd first
+3. touch person.txt
+4. mv person.txt another.txt
+5. cp another.txt copy.txt
+6. rm copy.txt
+7. cp -r first second
+8. rm -rf second
+
+Part II
+1. man brings up the manual for a command. To scroll press enter. To exit press q.
+2. The -l flag lists the files with more details, and the -a flag lists all files including hidden files.
+3. crtl + (left or right arrow)
+4. crtl + e
+5. crtl + a
+6. crtl + w 
+7. The terminal is the program that lets you interact with the shell which in turn interacts with the computer.
+8. An absolute path is a path name from the root.
+9. A relative path is a path name from the current directory thats not the root.
+10. A flag is a condition given to a command for more utility. -r -f for rm and -a for ls
+11. -r removes folders and -f will forcefully remove files regardless of permission
