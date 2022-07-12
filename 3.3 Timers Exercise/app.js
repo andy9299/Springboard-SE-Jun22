@@ -1,22 +1,22 @@
 function countDown(num) {
   let interval = setInterval(function (counter) {
-    num--
+    num--;
     if (!num) {
-      console.log('DONE!')
-      clearInterval(interval)
+      console.log('DONE!');
+      clearInterval(interval);
     } else {
-      console.log(num)
+      console.log(num);
     }
-  }, 1000)
+  }, 1000);
 }
 
 function randomGame() {
-  let counter = 0
+  let counter = 0;
   let interval = setInterval(function () {
-    counter++
+    counter++;
     if (Math.random() > 0.75) {
-      clearInterval(interval)
-      console.log(counter)
+      clearInterval(interval);
+      console.log(counter);
     }
-  }, 1000)
+  }, 1000);
 }

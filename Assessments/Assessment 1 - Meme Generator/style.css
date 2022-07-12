@@ -11,12 +11,14 @@ body {
   background-color: #353839;
   color: white;
 }
+
 .memeList {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
 }
+
 .meme {
   position: relative;
   width: 100%;
@@ -24,10 +26,12 @@ body {
   margin: 1em;
   display: flex;
 }
+
 .img {
   width: 100%;
   max-width: 300px;
 }
+
 .top,
 .bottom {
   position: absolute;
@@ -40,6 +44,7 @@ body {
   right: 0;
   text-align: center;
 }
+
 .top {
   top: 0;
 }

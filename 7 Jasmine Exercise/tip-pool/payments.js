@@ -43,7 +43,7 @@ function createCurPayment() {
       billAmt: billAmt,
       tipAmt: tipAmt,
       tipPercent: calculateTipPercent(billAmt, tipAmt),
-    }
+    };
   }
 }
 
