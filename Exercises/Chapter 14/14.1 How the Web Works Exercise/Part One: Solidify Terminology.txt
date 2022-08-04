@@ -1,0 +1,37 @@
+Part One: Solidify Terminology
+In your own terms, define the following terms:
+
+What is HTTP?
+Hyper Text Transfer Protocol. It's the way data is arranged when sent between systems.
+
+What is a URL?
+Uniform Resource Locator. It's the address for where stuff is on the internet.
+
+What is DNS?
+Domain Name System. It's the system that takes URLs and turns them into IP addresses for the computer.
+
+What is a query string?
+For URLs, it allows key-value pairs to be passed in the URL.
+
+What are two HTTP verbs and how are they different?
+GET - retrieve data
+POST -  send data
+
+What is an HTTP request?
+It's a request from the client to the server using the HTTP protocol.
+
+What is an HTTP response?
+It's the response from the server to the client using the HTTP protocol.
+
+What is an HTTP header? Give a couple examples of request and response headers you have seen.
+Headers are a way to put more information in the request or response.
+request: Host, Accept, Cookie
+Response: Content-Type, Last-Modified
+
+What are the processes that happen when you type “http://somesite.com/some/page.html” into a browser?
+1) The browser converts the URL into an IP address following DNS.
+2) The browser makes a request to the IP address.
+3) The server sends a response.
+4) The browser makes a DOM based on the HTML.
+5) The browser finds what else it needs (stuff like css/js files, images, other links etc).
+6) The browser makes additional needed requests.
