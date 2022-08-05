@@ -1,0 +1,27 @@
+body {
+    background-color: #353839;
+    color: white;
+}
+
+#gif-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.gif {
+    width: 100%;
+    max-width: 300px;
+    margin: 1em;
+}
+
+.img {
+    width: 100%;
+    max-width: 300px;
+}
+
+#clear,
+#add-gif {
+    display: inline-block;
+}
