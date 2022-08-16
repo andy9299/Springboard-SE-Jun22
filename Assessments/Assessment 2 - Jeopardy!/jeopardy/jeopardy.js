@@ -24,8 +24,6 @@ const loader = document.getElementById("lds-spinner");
 
 let categories = [];
 
-
-
 /** Get NUM_CATEGORIES random category from API.
  *
  * Returns array of category ids
@@ -131,8 +129,6 @@ function handleClick(evt) {
         evt.target.innerHTML = categories[x].clues[y].question;
     }
 }
-
-
 
 /** Wipe the current Jeopardy board, show the loading spinner,
  * and update the button used to fetch data.
