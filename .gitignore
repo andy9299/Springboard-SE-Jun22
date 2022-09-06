@@ -1,7 +1,10 @@
 Stuff/
 .vscode
-Exercises/Chapter\ 19/19.13\ Flask\ Intro\ Exercises/venv
+Exercises/Chapter\ 19/19.1\ Flask\ Intro\ Exercises/venv
+Exercises/Chapter\ 19/19.1\ Flask\ Intro\ Exercises/calc/__pycache__
+Exercises/Chapter\ 19/19.1\ Flask\ Intro\ Exercises/greet/__pycache__
 Exercises/Chapter\ 19/19.2\ Flask\ Jinja/venv
 Exercises/Chapter\ 19/19.3\ Flask\ Tools/venv
 Exercises/Chapter\ 19/19.3\ Flask\ Tools/__pycache__
-
+Exercises/Chapter\ 19/19.4\ Flask\ Session/venv
+Exercises/Chapter\ 19/19.4\ Flask\ Session/__pycache__
