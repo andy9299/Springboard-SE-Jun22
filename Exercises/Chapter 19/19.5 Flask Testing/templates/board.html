@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/app.css">
+    <title>Boggle</title>
+</head>
+
+<body>
+    {% for msg in get_flashed_messages() %}
+    <p>{{ msg }}</p>
+    {% endfor %}
+    <h1>Boggle</h1>
+    <section id="boggle">
+        <table class="board">
+            <tbody>
+                {% for row in board %}
+                <tr>
+                    {% for ele in row %}
+                    <td>{{ ele }}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <form method="POST" class="add-word">
+            <input name="word" class="word">
+            <button>Guess</button>
+        </form>
+        <p class="timer">
+        </p>
+        <p class="score">
+        </p>
+        <p class="msg">
+        </p>
+        <ul class="words">
+        </ul>
+
+    </section>
+    <footer>
+        High Score: {{ highscore }} in {{ plays }} plays
+    </footer>
+    <script src="http://unpkg.com/jquery"></script>
+    <script src="https://unpkg.com/axios@0.19.0/dist/axios.js"></script>
+    <script src="/static/app.js"></script>
+    <script>let boggleGame = new Boggle();</script>
+</body>
+
+</html>
