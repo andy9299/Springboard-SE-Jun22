@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Forex Converter</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+    <form class="convert" action="/convert">
+        Convert from <input name="from-currency" class="from-currency"> <br>
+        Convert to <input name="to-currency" class="to-currency"> <br>
+        Amount <input name="amount" class="amount"> <br>
+        <button>Convert</button>
+
+    </form>
+    {% for msg in get_flashed_messages() %}
+    <p>{{ msg }}</p>
+    {% endfor %}
+</body>
+
+</html>
