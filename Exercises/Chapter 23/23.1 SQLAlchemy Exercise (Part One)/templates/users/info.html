@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ user.first_name }} {{ user.last_name }}
+{% endblock %}
+
+{% block content %}
+
+{% if user.image_url %}
+<img class="pfp" src="{{ user.image_url }}" alt="Failed to get Image">
+{% endif %}
+
+<p>{{ user.first_name }} {{ user.last_name }}</p>
+
+<p>
+<form>
+    <button formaction="/users/{{ user.id }}/edit">Edit</button>
+    <button formaction="/users/{{ user.id }}/delete" formmethod="POST">Delete</button>
+</form>
+</p>
+<a href="/">Home</a>
+
+
+
+
+{% endblock %}
