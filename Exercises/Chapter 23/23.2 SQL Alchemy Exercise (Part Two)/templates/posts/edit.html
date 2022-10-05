@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Post
+{% endblock %}
+
+{% block content %}
+<h1>Edit Post</h1>
+
+<form method="POST">
+    <label>Title</label> <br>
+    <input name="title" placeholder="{{ post.title }}"> <br>
+    <label>Content</label> <br>
+    <textarea class="form-control" name="content" placeholder="{{ post.content }}"></textarea> <br>
+    <button formaction="/posts/{{ post.id }}" formmethod="GET">Cancel</button>
+    <button formaction="/posts/{{ post.id }}/edit" formmethod="POST">Edit</button>
+</form>
+
+{% endblock %}
