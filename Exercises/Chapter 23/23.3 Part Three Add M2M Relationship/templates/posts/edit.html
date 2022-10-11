@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Post
+{% endblock %}
+
+{% block content %}
+<h1>Edit Post</h1>
+
+<form method="POST">
+    <div class="mb-3">
+        <label>Title</label> <br>
+        <input name="title" placeholder="{{ post.title }}"> <br>
+    </div>
+    <div>
+        <label>Content</label> <br>
+        <textarea class="form-control" name="content" placeholder="{{ post.content }}"></textarea>
+    </div>
+    <div class="m-3">
+        {% for tag in tags %}
+        <br>
+        <input class="form-check-input" type="checkbox" value="{{ tag.id }}" id="tag_{{ tag.id }}" name="tags" {% if tag
+            in post.tags %} checked {% endif %}>
+        <label class="form-check-label" for="tag_{{ tag.id }}">
+            {{ tag.name }}
+        </label>
+        {% endfor %}
+    </div>
+    <button formaction="/posts/{{ post.id }}" formmethod="GET">Cancel</button>
+    <button formaction="/posts/{{ post.id }}/edit" formmethod="POST">Edit</button>
+</form>
+
+{% endblock %}
