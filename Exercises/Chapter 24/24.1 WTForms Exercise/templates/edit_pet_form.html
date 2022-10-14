@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Edit Pet
+{% endblock %}
+
+{% block content %}
+
+<h1 class="text-center">Edit a Pet</h1>
+
+<div class="row justify-content-center">
+    <div class="col-3">
+        <img class="img-thumbnail" src="{{ pet.get_image() }}">
+        <p>{{ pet.name }} is a {{ pet.species }}{% if pet.age %}, who is {{ pet.age }} years old{% endif %}.</p>
+    </div>
+    <div class="col-md-6">
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            {% for field in form if field.widget.input_type != 'hidden'%}
+            <div class="form-group">
+                {{ field.label }}
+                {{ field(class="form-control") }}
+                {% if field.errors %}
+                {% for error in field.errors %}
+                <small class="form-text text-danger">
+                    {{ error }}
+                </small>
+                {% endfor %}
+                {% endif %}
+            </div>
+            {% endfor %}
+            <a href="/" class="btn btn-danger">Cancel</a>
+            <button class="btn btn-success" type="submit">Edit</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
