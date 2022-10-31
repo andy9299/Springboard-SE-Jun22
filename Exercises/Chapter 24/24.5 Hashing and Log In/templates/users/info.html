@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ user.username }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="mb-2">
+    <h1>{{ user.username }}</h1>
+    <h6>{{ user.first_name }} {{ user.last_name }}</h6>
+    <div class="d-flex justify-content-between">
+        <div>
+            {{ user.email }}
+        </div>
+        <div>
+            <form>
+                <button class="btn btn-outline-danger" formmethod="POST"
+                    formaction="/users/{{ user.username }}/delete">Delete User</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% for feedback in feedbacks %}
+<div class="card mb-2">
+    <div class="card-body" style="background-color: #5c5c5c;">
+        <h3 class="card-title">{{ feedback.title }}</h1>
+            <p class="card-text">{{ feedback.content }}</p>
+            <form>
+                <button class="btn btn-outline-danger mr-2" formmethod="GET"
+                    formaction="/feedback/{{ feedback.id }}/update">Edit</button>
+                <button class="btn btn-outline-danger" formmethod="POST"
+                    formaction="/feedback/{{ feedback.id }}/delete">Delete</button>
+            </form>
+    </div>
+</div>
+{% endfor %}
+<a href="/users/{{ user.username }}/feedback/add" class="float-right btn btn-outline-success">Add Feedback</a>
+
+{% endblock %}
