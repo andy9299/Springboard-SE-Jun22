@@ -11,7 +11,11 @@
 
 
 <div class="text-danger">
-  SHOW ALL OF THE SONGS IN THIS PLAYLIST HERE
+  {% for song in songs %}
+  <li>
+    {{ song.title }} by {{ song.artist }}
+  </li>
+  {% endfor %}
 </div>
 
 <p>
