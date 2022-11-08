@@ -112,7 +112,8 @@ class User(db.Model):
 
     likes = db.relationship(
         'Message',
-        secondary="likes"
+        secondary="likes",
+        order_by='Message.timestamp.desc()'
     )
 
     def __repr__(self):

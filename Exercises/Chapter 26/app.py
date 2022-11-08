@@ -5,7 +5,7 @@ from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
 from forms import UserAddForm, LoginForm, MessageForm, EditUser
-from models import db, connect_db, User, Message, Follows
+from models import db, connect_db, User, Message, Follows, Likes
 
 CURR_USER_KEY = "curr_user"
 
@@ -179,6 +179,38 @@ def users_followers(user_id):
     return render_template('users/followers.html', user=user)
 
 
+@app.route('/users/<int:user_id>/likes', methods=['GET'])
+def users_likes(user_id):
+    """Show list of liked warbles from this user."""
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    user = User.query.get_or_404(user_id)
+    likes = user.likes
+    return render_template('users/likes.html', user=user, likes=likes)
+
+@app.route('/messages/<int:msg_id>/like', methods=['POST'])
+def toggle_likes(msg_id):
+    """Toggle like status on warble for logged-in user"""
+
+    if not g.user:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    likes = g.user.likes
+    liked_msg = Message.query.get_or_404(msg_id)
+
+    if liked_msg in likes:
+        g.user.likes.remove(liked_msg)
+    else:
+        g.user.likes.append(liked_msg)
+    
+    db.session.commit()
+
+    return redirect("/")
+
 @app.route('/users/follow/<int:follow_id>', methods=['POST'])
 def add_follow(follow_id):
     """Add a follow for the currently-logged-in user."""
@@ -325,8 +357,8 @@ def homepage():
                     .order_by(Message.timestamp.desc())
                     .limit(100)
                     .all())
-
-        return render_template('home.html', messages=messages)
+        likes_ids = {msg.id for msg in g.user.likes}
+        return render_template('home.html', messages=messages, likes=likes_ids)
 
     else:
         return render_template('home-anon.html')
