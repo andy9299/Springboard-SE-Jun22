@@ -1,0 +1,14 @@
+{
+  "name": "31.4-node-intro",
+  "version": "1.0.0",
+  "description": "node practice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Andy Tu",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.2.2"
+  }
+}
