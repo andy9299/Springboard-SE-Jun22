@@ -7,14 +7,6 @@ function getUrls(fileName) {
   return result;
 }
 
-async function getUrlData(url) {
-  await axios.get(url).then(resp => {
-    writeUrlDataHelper(resp.data, url);
-  }).catch(e => {
-    console.error(`Couldn't download ${url}`);
-  });
-}
-
 function writeUrlDataHelper(data, url) {
   let fileName = url.split('/');
   fileName = fileName[2];
@@ -28,8 +20,15 @@ function writeUrlDataHelper(data, url) {
 }
 
 async function writeUrlData(arr) {
-  let urlDataPromises = arr.map(getUrlData);
-  await Promise.all([urlDataPromises]);
+  let respArr = await Promise.allSettled(arr.map(axios.get));
+  respArr.forEach((e, i) => {
+    if (e.status === 'rejected') {
+      console.error(`Couldn't download ${arr[i]}`);
+    } else {
+      writeUrlDataHelper(e.value.data, arr[i]);
+    }
+  });
+
 }
 
 let fileName;
