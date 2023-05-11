@@ -3,10 +3,12 @@
 Answer the following questions below:
 
 - What is a JWT?
-- JSON web token
+
+  - JSON web token
 
 - What is the signature portion of the JWT? What does it do?
-- It is the signed part of a JWT. It helps to validate the token/payload with a secret key.
+
+  - It is the signed part of a JWT. It helps to validate the token/payload with a secret key.
 
 - If a JWT is intercepted, can the attacker see what's inside the payload?
 
