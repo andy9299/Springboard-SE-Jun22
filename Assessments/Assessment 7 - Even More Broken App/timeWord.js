@@ -1,7 +1,8 @@
 timeDigitsWord = {
   1: "one", 2: "two", 3: "three", 4: "four", 5: "five", 6: "six", 7: "seven",
   8: "eight", 9: "nine", 10: "ten", 11: "eleven", 12: "twelve", 13: "thirteen",
-  20: "twenty", 30: "thirty", 40: "forty", 50: "fifty"
+  14: "fourteen", 15: "fifteen", 16: "sixteen", 17: "seventeen", 18: "eighteen",
+  19: "nineteen", 20: "twenty", 30: "thirty", 40: "forty", 50: "fifty"
 };
 
 function timeWord(time) {
@@ -12,26 +13,23 @@ function timeWord(time) {
   if (mins == 0) {
     if (hours == 0) return "midnight";
     if (hours == 12) return "noon";
-    minsWords += " o’clock";
+    minsWords = " o’clock";
   }
   else if (mins <= 9) {
-    minsWords += (" oh " + timeDigitsWord[mins]);
-  }
-  else if (mins <= 13) {
-    minsWords += (" " + timeDigitsWord[mins]);
+    minsWords = ` oh ${timeDigitsWord[mins]}`;
   }
   else if (mins <= 19) {
-    minsWords += (" " + timeDigitsWord[mins % 10] + "teen");
+    minsWords = ` ${timeDigitsWord[mins]}`;
   }
   else {
-    minsWords += (" " + timeDigitsWord[Math.floor(mins / 10) * 10]);
+    minsWords = ` ${timeDigitsWord[Math.floor(mins / 10) * 10]}`;
     if (timeDigitsWord[mins % 10]) {
-      minsWords += " " + timeDigitsWord[mins % 10];
+      minsWords = `${minsWords} ${timeDigitsWord[mins % 10]}`;
     };
   }
   hoursWords = timeDigitsWord[(hours + 11) % 12 + 1];
-  minsWords += (Math.floor(hours / 12)) ? " pm" : " am";
-  return hoursWords + minsWords;
+  minsWords = `${minsWords}${(Math.floor(hours / 12)) ? " pm" : " am"}`;
+  return `${hoursWords}${minsWords}`;
 }
 
 module.exports = timeWord;
