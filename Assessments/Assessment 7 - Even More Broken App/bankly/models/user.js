@@ -6,9 +6,16 @@ const { BCRYPT_WORK_FACTOR } = require("../config");
 
 class User {
 
-/** Register user with data. Returns new user data. */
+  /** Register user with data. Returns new user data. */
 
-  static async register({username, password, first_name, last_name, email, phone}) {
+  static async register({ username, password, first_name, last_name, email, phone }) {
+    // FIXES BUG #7
+    for (const key in arguments[0]) {
+      if (!(arguments[0][key])) {
+        throw new ExpressError('Missing Data', 400);
+      }
+    }
+
     const duplicateCheck = await db.query(
       `SELECT username 
         FROM users 
@@ -39,7 +46,6 @@ class User {
         phone
       ]
     );
-
     return result.rows[0];
   }
 
@@ -115,7 +121,6 @@ class User {
     if (!user) {
       new ExpressError('No such user', 404);
     }
-
     return user;
   }
 
@@ -134,7 +139,17 @@ class User {
       'username',
       username
     );
-
+    // FIXES BUG #2
+    // checks case if theres no data to update
+    if (values.length == 1) {
+      const result = await db.query(
+        `SELECT *
+         FROM users
+         WHERE username = $1`,
+        [username]
+      );
+      return result.rows[0];
+    }
     const result = await db.query(query, values);
     const user = result.rows[0];
 
@@ -157,7 +172,6 @@ class User {
       [username]
     );
     const user = result.rows[0];
-
     if (!user) {
       throw new ExpressError('No such user', 404);
     }

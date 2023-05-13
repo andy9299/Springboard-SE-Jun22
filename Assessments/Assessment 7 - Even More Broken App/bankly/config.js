@@ -8,10 +8,13 @@ const PORT = +process.env.PORT || 3000;
 
 const BCRYPT_WORK_FACTOR = 10;
 
-const DB_URI =
-  process.env.NODE_ENV === 'test'
-    ? 'postgresql:///bankly_test'
-    : 'postgresql:///bankly';
+const DB_URI = {
+  // not a bug postgresql:///bankly_test -> bankly_test
+  database: process.env.NODE_ENV === 'test'
+    ? 'bankly_test'
+    : 'bankly',
+  password: 'password'
+};
 
 module.exports = {
   BCRYPT_WORK_FACTOR,

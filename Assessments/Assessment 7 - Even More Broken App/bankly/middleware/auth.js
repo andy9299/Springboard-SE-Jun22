@@ -48,10 +48,14 @@ function authUser(req, res, next) {
   try {
     const token = req.body._token || req.query._token;
     if (token) {
-      let payload = jwt.decode(token);
+      // FIXES BUG #3
+      // need to verify jwt
+      // let payload = jwt.decode(token);
+      let payload = jwt.verify(token, SECRET_KEY);
       req.curr_username = payload.username;
       req.curr_admin = payload.admin;
     }
+
     return next();
   } catch (err) {
     err.status = 401;

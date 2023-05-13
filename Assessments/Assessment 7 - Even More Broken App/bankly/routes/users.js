@@ -15,9 +15,16 @@ const { authUser, requireLogin, requireAdmin } = require('../middleware/auth');
  *
  */
 
-router.get('/', authUser, requireLogin, async function(req, res, next) {
+router.get('/', authUser, requireLogin, async function (req, res, next) {
   try {
     let users = await User.getAll();
+    // FIXES BUG #4
+    // Should only return basic info
+    users = users.map(user => ({
+      username: user.username,
+      first_name: user.first_name,
+      last_name: user.last_name
+    }));
     return res.json({ users });
   } catch (err) {
     return next(err);
@@ -35,11 +42,7 @@ router.get('/', authUser, requireLogin, async function(req, res, next) {
  *
  */
 
-router.get('/:username', authUser, requireLogin, async function(
-  req,
-  res,
-  next
-) {
+router.get('/:username', authUser, requireLogin, async function (req, res, next) {
   try {
     let user = await User.get(req.params.username);
     return res.json({ user });
@@ -63,7 +66,7 @@ router.get('/:username', authUser, requireLogin, async function(
  *
  */
 
-router.patch('/:username', authUser, requireLogin, requireAdmin, async function(
+router.patch('/:username', authUser, requireLogin, requireAdmin, async function (
   req,
   res,
   next
@@ -73,9 +76,19 @@ router.patch('/:username', authUser, requireLogin, requireAdmin, async function(
       throw new ExpressError('Only  that user or admin can edit a user.', 401);
     }
 
-    // get fields to change; remove token so we don't try to change it
-    let fields = { ...req.body };
-    delete fields._token;
+    // // get fields to change; remove token so we don't try to change it
+    // let fields = { ...req.body };
+    // delete fields._token;
+
+    // FIXES BUG 6
+    // only accepting certain fields
+    const { first_name, last_name, phone, email } = req.body;
+    let fields = { first_name, last_name, phone, email };
+    Object.keys(fields).forEach(key => {
+      if (fields[key] === undefined) {
+        delete fields[key];
+      }
+    });
 
     let user = await User.update(req.params.username, fields);
     return res.json({ user });
@@ -94,13 +107,15 @@ router.patch('/:username', authUser, requireLogin, requireAdmin, async function(
  * If user cannot be found, return a 404 err.
  */
 
-router.delete('/:username', authUser, requireAdmin, async function(
+router.delete('/:username', authUser, requireAdmin, async function (
   req,
   res,
   next
 ) {
   try {
-    User.delete(req.params.username);
+    // FIXES BUG 5
+    // missing await
+    await User.delete(req.params.username);
     return res.json({ message: 'deleted' });
   } catch (err) {
     return next(err);

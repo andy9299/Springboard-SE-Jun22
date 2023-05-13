@@ -15,7 +15,7 @@ app.use('/users', userRoutes);
 
 /** 404 handler */
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   const err = new ExpressError("Not Found", 404);
 
   // pass the error to the next piece of middleware
@@ -24,7 +24,7 @@ app.use(function(req, res, next) {
 
 /** general error handler */
 
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   res.status(err.status || 500);
 
   return res.json({
