@@ -1,0 +1,1 @@
+const NamedComponent = (prop) => <h1>My name is {prop.name}. </h1>;
