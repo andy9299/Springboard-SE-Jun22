@@ -1,0 +1,14 @@
+.Pokemon {
+  display: inline-block;
+  width: 7em;
+  background-color: lightgray;
+  border-radius: .5em;
+  text-align: center;
+  padding: 1em;
+  margin: 1em;
+}
+
+.Pokemon-name {
+  color: blue;
+  font-weight: bold;
+}
