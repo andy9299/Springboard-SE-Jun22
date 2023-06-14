@@ -10,11 +10,15 @@ function Madlibs() {
     setMadlib({ ...madlib, words: wordsObj });
     setFinishedStory(true);
   };
+  const restart = () => {
+    setFinishedStory(false);
+    setMadlib(emptyMadlibs[0]);
+  };
   return (
     <>
       <h1>Madlibs!</h1>
       <div>
-        {finishedStory ? <Story madlib={madlib} /> : <MadlibsForm words={madlib.words} updateWords={updateWords} />}
+        {finishedStory ? <Story madlib={madlib} restart={restart} /> : <MadlibsForm words={madlib.words} updateWords={updateWords} />}
       </div>
     </>
   );

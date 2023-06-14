@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Story({ madlib }) {
+function Story({ madlib, restart }) {
   return (
     <div>
-      {madlib.story()}
+      <p>{madlib.story()}</p>
+      <button onClick={restart}>Restart</button>
     </div>
   );
 }
