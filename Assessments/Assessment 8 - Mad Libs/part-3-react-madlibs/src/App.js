@@ -1,10 +1,10 @@
 import React from 'react';
 import Madlibs from './Madlibs';
-
+import './App.css';
 
 function App() {
   return (
-    <div>
+    <div className='App'>
       <Madlibs />
     </div>
   );
