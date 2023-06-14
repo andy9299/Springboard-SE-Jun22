@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { v4 as uuid } from 'uuid';
 import './MadlibsForm.css';
 
 function MadlibsForm({ words, updateWords }) {
@@ -18,7 +17,7 @@ function MadlibsForm({ words, updateWords }) {
         {Object.keys(words).map((key) => (
           <input
             required
-            key={uuid()}
+            key={key}
             type="text"
             id={key}
             name={key}
