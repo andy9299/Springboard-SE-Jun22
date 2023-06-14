@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import './MadlibsForm.css';
 
-function MadlibsForm({ words, updateWords }) {
+function MadlibsForm({ words, updateWords, madlibId }) {
   const [formData, setFormData] = useState(words);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -11,15 +11,18 @@ function MadlibsForm({ words, updateWords }) {
     const { name, value } = e.target;
     setFormData((formData) => ({ ...formData, [name]: value }));
   };
+  useEffect(() => {
+    setFormData(words);
+  }, [words]);
   return (
     <div>
       <form onSubmit={handleSubmit}>
         {Object.keys(words).map((key) => (
           <input
             required
-            key={key}
+            key={`${madlibId}-${key}`}
             type="text"
-            id={key}
+            id={`${madlibId}-${key}`}
             name={key}
             placeholder={key}
             value={formData[key]}
