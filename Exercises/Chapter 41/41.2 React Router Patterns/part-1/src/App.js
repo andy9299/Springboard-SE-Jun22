@@ -5,12 +5,14 @@ import duke from "./images/duke.jpg";
 import perry from "./images/perry.jpg";
 import { BrowserRouter } from 'react-router-dom';
 import DogRoutes from './DogRoutes';
+import NavBar from './NavBar';
 
 
 function App({ dogs }) {
   return (
     <div>
       <BrowserRouter>
+        <NavBar dogs={dogs} />
         <DogRoutes dogs={dogs} />
       </BrowserRouter>
     </div>
